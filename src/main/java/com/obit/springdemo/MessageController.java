@@ -20,7 +20,7 @@ public class MessageController {
 
     @PostMapping("messages")
     public ResponseEntity<Message> createMessage(@RequestBody Message message){
-        messageRepository.save(message);
-        return new ResponseEntity<>(message, HttpStatus.CREATED);
+        Message save = messageRepository.save(message);
+        return new ResponseEntity<>(save, HttpStatus.CREATED);
     }
 }

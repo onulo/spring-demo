@@ -14,7 +14,7 @@ import org.hibernate.annotations.GenericGenerator;
 public class Message {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long uid;
 
     private String message;

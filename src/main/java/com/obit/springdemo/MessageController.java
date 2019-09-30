@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController("/")
+@RestController
 @Slf4j
 public class MessageController {
 
@@ -27,7 +27,7 @@ public class MessageController {
     }
 
 
-    @PostMapping("messages")
+    @PostMapping("/messages")
     public ResponseEntity<Message> createMessage(@RequestBody Message message){
         messageRepository.save(message);
         log.info("New message {} created", message);
@@ -41,7 +41,7 @@ public class MessageController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @GetMapping
+    @GetMapping("/messages")
     public ResponseEntity<Page<Message>> getAllMessages(@RequestParam int page, @RequestParam int size){
         Page<Message> all = messageRepository.findAll(PageRequest.of(page, size));
         log.info("Found messages: {} from total elements: {}", all.getContent(), all.getTotalElements());
